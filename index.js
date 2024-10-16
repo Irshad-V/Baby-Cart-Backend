@@ -7,11 +7,19 @@ const cookieParser = require('cookie-parser')
 const allUsers = require('./controller/user/allUsers.js')
 
 const app = express()
-app.use(cookieParser());
+const allowedOrigin = 'http://localhost:3000';
 
+const corsOptions = {
+  origin: allowedOrigin,  // Allow only this origin
+  credentials: true,      // Allow credentials (cookies, tokens)
+  optionsSuccessStatus: 200,  // For legacy browsers
+};
+
+// Apply the CORS middleware with the options
+app.use(cors(corsOptions));
+app.use(cookieParser());
 app.use(express.json())
 
-app.use(cors())
 
 
 app.use("/api", router)
