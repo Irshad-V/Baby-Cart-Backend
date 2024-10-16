@@ -11,10 +11,7 @@ app.use(cookieParser());
 
 app.use(express.json())
 
-app.use(cors({
-    origin: '*',  // Allow all origins
-    credentials: false,  // Credentials (like cookies) won't be allowed with this
-  }));
+app.use(cors())
 
 
 app.use("/api", router)
